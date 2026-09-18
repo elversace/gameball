@@ -1,0 +1,154 @@
+/* CatBall v27 Premium Challenge — visual direction locked to the approved palace reference */
+:root{--v27-glass:rgba(12,18,27,.92);--v27-edge:rgba(255,255,255,.72);--v27-gold:#ffd447;--v27-cyan:#73e9ff;--v27-red:#ff5161}
+.scenery{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;filter:saturate(1.08) contrast(1.035) brightness(1.015)!important;animation:none!important;transform:none!important}
+.arena[data-world="mountains"] .scenery{filter:saturate(1.03) contrast(1.045) brightness(.99) hue-rotate(4deg)!important}
+.arena[data-world="coast"] .scenery{filter:saturate(1.12) contrast(1.025) brightness(1.035) sepia(.035)!important}
+.arena::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
+ radial-gradient(circle at 73% 16%,rgba(255,239,179,.2),transparent 24%),
+ linear-gradient(180deg,rgba(35,141,220,.035),transparent 38%,rgba(91,45,10,.05) 100%);
+ mix-blend-mode:screen}
+.arena::after{background:
+ linear-gradient(90deg,rgba(10,22,18,.17),transparent 8%,transparent 91%,rgba(10,22,18,.16)),
+ linear-gradient(180deg,rgba(0,18,33,.08),transparent 31%,transparent 76%,rgba(35,14,5,.18))!important;
+ box-shadow:inset 0 0 42px rgba(8,17,15,.16)!important}
+#game{filter:drop-shadow(0 3px 1px rgba(20,12,5,.08))!important}
+.cat-sprite{z-index:6!important;overflow:visible!important;filter:drop-shadow(0 10px 7px rgba(49,25,8,.34))!important}
+.cat-sprite img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important}
+.cat-sprite.quick-ready{filter:drop-shadow(0 0 13px rgba(255,233,106,.9)) drop-shadow(0 10px 7px rgba(49,25,8,.3))!important}
+#wallet,.lives-pill,#mapButton,#settingsButton,.level-badge,.attempts,.target-counter span{
+ background:linear-gradient(180deg,rgba(27,36,48,.96),rgba(7,12,19,.94))!important;
+ border:2px solid var(--v27-edge)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 5px 14px rgba(0,0,0,.32)!important;
+ text-shadow:0 1px 2px rgba(0,0,0,.7);
+}
+.level-badge{min-width:205px!important;border-radius:28px!important;border-right:2px solid var(--v27-edge)!important;padding:7px 17px!important}
+.level-badge span{color:var(--v27-gold)!important;font-size:14px!important;font-weight:900!important}
+.level-badge strong{font-size:16px!important;font-weight:900!important}
+.target-counter{gap:7px!important}
+.target-counter span{font-size:14px!important;font-weight:900!important;min-height:52px!important}
+#targetCount{min-width:205px!important;justify-content:center!important}
+#difficulty{color:#ffec9c!important}
+#wind{color:#bdefff!important}
+#wallet{color:var(--v27-gold)!important;font-weight:950!important}
+.lives-pill span{color:var(--v27-red)!important;text-shadow:0 2px 0 #9e1830,0 0 8px rgba(255,66,90,.4)!important}
+.stage-controls{z-index:28!important}
+.hud-actions button{background:linear-gradient(180deg,rgba(30,37,47,.97),rgba(7,11,17,.96))!important;border:2px solid rgba(255,255,255,.7)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 5px 14px rgba(0,0,0,.34)!important}
+.bottom-bar{z-index:29!important}
+.bottom-bar p{background:linear-gradient(180deg,rgba(42,34,31,.88),rgba(18,14,15,.9))!important;border:2px solid rgba(255,255,255,.58)!important;color:#fff!important;font-weight:800!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 7px 20px rgba(0,0,0,.3)!important}
+.aim-meter{background:rgba(9,14,20,.85)!important;border:1px solid rgba(255,255,255,.45)!important;box-shadow:0 5px 14px rgba(0,0,0,.28)!important}
+.aim-meter i{background:linear-gradient(90deg,#61e4c9,#ffe45b,#ff8b4a,#ff4b59)!important;box-shadow:0 0 9px rgba(255,211,71,.45)}
+dialog{background:linear-gradient(180deg,#1b2532,#0d131d)!important;border-color:rgba(255,255,255,.45)!important;box-shadow:0 25px 90px rgba(0,0,0,.65)!important}
+body[data-tier="4"] #difficulty,body[data-tier="5"] #difficulty{color:#ffd34e!important;border-color:#ffd34e!important;box-shadow:0 0 18px rgba(255,190,35,.25),inset 0 1px 0 rgba(255,255,255,.22)!important}
+body[data-tier="5"] .arena::after{background:linear-gradient(180deg,rgba(255,134,54,.025),transparent 45%,rgba(22,8,5,.22))!important}
+@media(orientation:landscape) and (max-height:600px){
+ .level-badge{min-width:174px!important;padding:5px 13px!important}
+ .level-badge span{font-size:11px!important}.level-badge strong{font-size:13px!important}
+ #targetCount{min-width:170px!important}
+ .target-counter span{font-size:12px!important}
+ .cat-sprite{filter:drop-shadow(0 7px 5px rgba(49,25,8,.32))!important}
+}
+@media(max-width:760px) and (orientation:landscape){
+ .stage-toolbar{left:max(112px,calc(env(safe-area-inset-left) + 112px))!important}
+ .level-badge{min-width:142px!important;max-width:175px!important}
+ #targetCount{min-width:150px!important}
+}
+
+.arena[data-scene="0"] .scenery{filter:saturate(1.08) contrast(1.035) brightness(1.015)!important}
+.arena[data-scene="1"] .scenery{filter:saturate(1.14) contrast(1.025) brightness(1.035)!important}
+.arena[data-scene="2"] .scenery{filter:saturate(1.06) contrast(1.05) brightness(1.025) sepia(.04)!important}
+.arena[data-scene="3"] .scenery{filter:saturate(1.12) contrast(1.04) brightness(.995)!important}
+.arena[data-scene="4"] .scenery{filter:saturate(1.01) contrast(1.07) brightness(.98) hue-rotate(3deg)!important}
+.arena[data-scene="5"] .scenery{filter:saturate(1.08) contrast(1.08) brightness(.9)!important}
+.arena[data-variant="1"]::before,.arena[data-variant="7"]::before{background:radial-gradient(circle at 20% 18%,rgba(255,232,160,.18),transparent 30%),linear-gradient(180deg,rgba(255,255,255,.02),transparent 55%)!important}
+.arena[data-variant="3"]::before,.arena[data-variant="9"]::before{background:radial-gradient(circle at 78% 16%,rgba(255,217,126,.22),transparent 24%),linear-gradient(180deg,rgba(40,126,176,.03),transparent 58%)!important}
+.arena[data-variant="5"]::after,.arena[data-variant="11"]::after{box-shadow:inset 0 0 70px rgba(8,17,15,.23)!important}
+
+/* Final live polish */
+.home-cat-wrap{left:2.6vw!important;bottom:2.8vh!important}
+.home-cat.mascot-cat{
+  position:absolute!important;
+  left:0!important;
+  bottom:0!important;
+  width:min(31vw,430px)!important;
+  height:auto!important;
+  max-height:46vh!important;
+  object-fit:contain!important;
+  font-size:0!important;
+  line-height:1!important;
+  transform:none!important;
+  text-shadow:none!important;
+  filter:drop-shadow(0 15px 18px rgba(31,27,20,.28))!important;
+}
+@media(orientation:landscape) and (max-height:600px){
+  .home-cat.mascot-cat{width:min(27vw,320px)!important;max-height:44vh!important}
+}
+
+/* Rotation-lock fallback: preserve a landscape game even when iOS keeps the viewport portrait. */
+@media (orientation:portrait){
+  html,body{width:100vw!important;height:100dvh!important;min-height:100dvh!important;overflow:hidden!important}
+  #homeScreen,main{
+    position:fixed!important;
+    inset:auto!important;
+    left:0!important;
+    top:0!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:max(100vw,100dvh)!important;
+    height:min(100vw,100dvh)!important;
+    min-width:0!important;
+    max-width:none!important;
+    min-height:0!important;
+    max-height:none!important;
+    transform:rotate(90deg) translateY(-100%)!important;
+    transform-origin:0 0!important;
+    overflow:hidden!important;
+  }
+  main>header{visibility:visible!important;pointer-events:none!important}
+  main>header .top-actions{visibility:visible!important}
+  main>header .top-actions>*{visibility:visible!important}
+  .theater,.bottom-bar{visibility:visible!important}
+  #settingsButton{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;font-size:22px!important;top:7px!important}
+  #mapButton{left:62px!important;top:7px!important;width:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;font-size:0!important}
+  #mapButton span{font-size:21px!important}
+  .stage-toolbar{left:114px!important;top:7px!important}
+  .level-badge{min-width:130px!important;max-width:170px!important;min-height:44px!important;height:44px!important;padding:4px 10px!important}
+  .level-badge span{font-size:9px!important}.level-badge strong{font-size:12px!important}
+  .attempts{display:none!important}
+  .target-counter{top:7px!important;left:50%!important;transform:translateX(-50%)!important}
+  .target-counter span{min-height:44px!important;padding:6px 11px!important;font-size:11px!important}
+  .target-counter #wind,.target-counter #difficulty{display:none!important}
+  #wallet{top:7px!important;right:100px!important;height:44px!important;min-height:44px!important;font-size:16px!important;padding:4px 11px!important}
+  #wallet .coin-icon{width:24px!important;height:24px!important}
+  .lives-pill{top:7px!important;right:7px!important;height:44px!important;min-height:44px!important;padding:3px 9px!important}
+  .lives-pill span{font-size:24px!important}
+  .hud-actions button{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;font-size:27px!important}
+  .bottom-bar{bottom:10px!important;width:54%!important}
+  .bottom-bar p{padding:9px 17px!important;font-size:12px!important}
+  .power-dock{width:34%!important;bottom:2px!important}
+  .home-topbar{top:8px!important;right:12px!important}
+  .home-resources{gap:7px!important}
+  .resource-pill{height:38px!important;min-width:92px!important;padding:4px 7px!important;font-size:14px!important}
+  .resource-pill i{width:25px!important;height:25px!important;font-size:19px!important}
+  .heart-pill>span{font-size:24px!important}
+  .gift-button{height:39px!important;width:44px!important;font-size:20px!important}
+  .home-logo{top:14px!important;left:3%!important;width:47%!important}
+  .home-logo strong{font-size:72px!important}
+  .home-logo small{font-size:11px!important;margin-top:6px!important;padding:5px 13px!important}
+  .home-cat-wrap{left:2%!important;bottom:1%!important;width:34%!important;height:70%!important}
+  .home-cat.mascot-cat{width:100%!important;max-height:70%!important}
+  .home-actions{right:4%!important;bottom:3%!important;width:47%!important;gap:8px!important}
+  .home-play{min-height:74px!important;border-radius:22px!important;padding:8px 18px!important}
+  .home-play b{font-size:28px!important}.home-play small{font-size:10px!important}
+  .play-triangle{width:41px!important;height:41px!important}
+  .home-menu{min-height:62px!important;border-radius:19px!important}.home-menu span{font-size:22px!important}.home-menu b{font-size:12px!important}
+  dialog[open]{
+    position:fixed!important;
+    left:50%!important;
+    top:50%!important;
+    margin:0!important;
+    transform:translate(-50%,-50%) rotate(90deg)!important;
+    transform-origin:center!important;
+    max-width:min(82dvh,780px)!important;
+    max-height:86dvw!important;
+  }
+}
