@@ -1,0 +1,46 @@
+/* Safari/WebKit hardening for the approved CatBall landscape HUD. */
+main>header{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+  visibility:visible!important;
+  z-index:50!important;
+}
+main>header .top-actions{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+main>header .top-actions>*{
+  pointer-events:auto!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#settingsButton,#mapButton,#wallet,.lives-pill{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#settingsButton{
+  z-index:54!important;
+  overflow:visible!important;
+}
+#mapButton{z-index:53!important}
+#wallet,.lives-pill{z-index:52!important}
+@media (orientation:portrait){
+  main>header{visibility:hidden!important;pointer-events:none!important}
+}
+@media (orientation:landscape){
+  main>header{visibility:visible!important}
+  #settingsButton,#mapButton,#wallet,.lives-pill{visibility:visible!important}
+}
