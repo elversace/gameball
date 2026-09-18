@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0f6c90">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CatBall">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="description" content="CatBall — مغامرة القط والكرة عبر 200 مرحلة مليئة بالألغاز والتحديات.">
+  <title>CatBall · مغامرات صغيرة، متعة كبيرة</title>
+  <link rel="stylesheet" href="style.css?v=24b">
+  <link rel="stylesheet" href="v25.css?v=25">
+  <link rel="stylesheet" href="approved-visuals.css?v=1">
+  <link rel="stylesheet" href="safari-landscape-fixes.css?v=1">
+  <link rel="stylesheet" href="v27-premium.css?v=29.0">
+</head>
+<body>
+  <section id="homeScreen" class="home-screen" aria-label="القائمة الرئيسية">
+    <img class="home-bg" src="assets/scene-palace-hq.webp" alt="" aria-hidden="true">
+    <div class="home-vignette" aria-hidden="true"></div>
+    <div class="home-topbar">
+      <div class="home-resources" aria-label="الموارد">
+        <div class="resource-pill coin-pill"><span class="coin-icon" aria-hidden="true"></span><strong id="homeCoinCount">0</strong><i>+</i></div>
+        <div class="resource-pill heart-pill"><span aria-hidden="true">♥</span><strong>5</strong><i>+</i></div>
+        <button id="giftButton" class="gift-button" aria-label="الهدايا">🎁</button>
+      </div>
+    </div>
+    <div class="home-logo" aria-label="CatBall">
+      <strong dir="ltr"><span>Cat</span>Ball</strong>
+      <small>مغامرات صغيرة .. متعة كبيرة</small>
+    </div>
+    <div class="home-cat-wrap" aria-hidden="true">
+      <img class="home-cat mascot-cat" src="assets/cat-premium-hq.webp" alt="" aria-hidden="true">
+      <div class="home-ball"></div>
+    </div>
+    <div class="home-actions">
+      <button id="homePlay" class="home-play"><span class="play-triangle" aria-hidden="true"></span><b>ابدأ اللعب</b><small id="homeLevelLabel">المرحلة 1</small></button>
+      <div class="home-menu-row">
+        <button id="homeStages" class="home-menu purple"><span>▦</span><b>المراحل</b></button>
+        <button id="homeSettings" class="home-menu blue"><span>⚙</span><b>الإعدادات</b></button>
+        <button id="homeShop" class="home-menu pink"><span>▣</span><b>المتجر</b></button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <header>
+      <a class="brand" href="#" aria-label="العودة للقائمة الرئيسية"><div><strong dir="ltr">CatBall</strong><span>مغامرات صغيرة .. متعة كبيرة</span></div></a>
+      <div class="top-actions">
+        <div id="wallet" class="wallet" aria-label="0 دراهم ذهبية"><span class="coin-icon" aria-hidden="true"></span><strong id="coinCount">0</strong></div>
+        <div class="lives-pill" aria-label="5 قلوب"><span>♥</span><strong>5</strong></div>
+        <button id="mapButton">المراحل <span aria-hidden="true">▦</span></button>
+        <button id="settingsButton" aria-label="الإعدادات" title="الإعدادات">⚙</button>
+      </div>
+    </header>
+
+    <div class="theater">
+      <div class="hud stage-toolbar">
+        <div class="level-badge"><span id="worldName"></span><strong id="levelName"></strong></div>
+        <div class="attempts"><span>المحاولات</span><div id="balls"></div></div>
+      </div>
+      <div class="target-counter"><span id="targetCount"></span><span id="wind"></span><span id="difficulty"></span></div>
+      <section class="arena" aria-label="ملعب مغامرات القط">
+        <img id="scenery" class="scenery" alt="" src="assets/scene-palace-hq.webp">
+        <canvas id="game" tabindex="0" aria-label="اسحب من الكرة إلى اليسار ثم اتركها. الأسهم لضبط التصويب وإدخال للرمي."></canvas>
+        <div id="catSprite" class="cat-sprite" aria-hidden="true" hidden><img id="catAtlas" src="assets/cat-premium-hq.webp" alt=""></div>
+        <div id="status" class="status" aria-live="polite"></div>
+        <div id="overlay" class="overlay" hidden>
+          <section class="result" role="dialog" aria-modal="true" aria-labelledby="title">
+            <div id="stars" class="stars" aria-label=""></div>
+            <h1 id="title"></h1><p id="message"></p>
+            <button id="again" class="primary"></button>
+            <button id="resultMap" class="secondary">خريطة المغامرة</button>
+          </section>
+        </div>
+        <div id="loading" class="loading"><span>نجهّز المغامرة…</span></div>
+      </section>
+      <div class="stage-controls">
+        <div class="hud-actions"><button id="pause" aria-label="إيقاف مؤقت">Ⅱ</button><button id="reset" aria-label="إعادة المرحلة">↻</button></div>
+        <div class="power-dock"><div class="aim-meter" id="aimMeter" hidden><span>قوة التصويب</span><div><i id="power"></i></div></div></div>
+      </div>
+    </div>
+
+    <div class="bottom-bar"><p id="hint"></p></div>
+
+    <dialog id="settingsDialog">
+      <div class="map-head"><h2>الإعدادات</h2><button id="closeSettings" aria-label="إغلاق الإعدادات">×</button></div>
+      <p class="release-label">CatBall · Final Developer Build</p>
+      <div class="settings-controls">
+        <button id="sound" class="setting-row" aria-label="تشغيل الصوت" aria-pressed="false"><span class="setting-icon">♪</span><span>المؤثرات الصوتية</span><b class="toggle-label">الصوت: مغلق</b></button>
+        <label class="volume-label" for="volume"><span><i>🔊</i> مستوى الصوت</span><input id="volume" type="range" min="0" max="100" value="70"></label>
+        <button id="motion" class="setting-row" aria-label="تبديل حركة المشهد" aria-pressed="true"><span class="setting-icon">✦</span><span>حركة المشهد</span><b class="toggle-label">الحركة: كاملة</b></button>
+        <div class="mode"><span>أسلوب اللعب</span><button id="family" aria-pressed="true">عائلي</button><button id="challenge" aria-pressed="false">تحدّي</button></div>
+      </div>
+    </dialog>
+
+    <dialog id="levelDialog">
+      <div class="map-head"><div><span>المدينة الذهبية • 200 مرحلة</span><h2>المراحل</h2></div><button id="closeMap" aria-label="إغلاق المراحل">×</button></div>
+      <div class="map-intro"><span class="map-paw">🐾</span><div><b>كل مرحلة مغامرة جديدة</b><small>اجمع النجوم وافتح طرقًا جديدة عبر عوالم CatBall.</small></div></div>
+      <div id="levelGrid"></div>
+      <p class="map-note">التقدّم والنجوم محفوظة على هذا الجهاز. أعد أي مرحلة لتحسين نتيجتك.</p>
+    </dialog>
+
+    <dialog id="shopDialog">
+      <div class="map-head"><h2>المتجر</h2><button id="closeShop" aria-label="إغلاق المتجر">×</button></div>
+      <div class="shop-preview"><span>🎁</span><h3>مكافآت CatBall</h3><p>هذه الشاشة جاهزة للتصميم، وسيتم ربط المشتريات والمكافآت عندما نقرر نظام المتجر النهائي.</p><button id="shopContinue" class="primary">حسنًا</button></div>
+    </dialog>
+
+    <details><summary>كيف ألعب؟</summary><p>المس الكرة واسحب إلى اليسار، ثم اتركها. السحب أكثر يزيد القوة، والسحب إلى أسفل يرفع القوس. أصب كل الأهداف واستخدم الارتدادات والعوائق بذكاء. التقدّم والنجوم والعملات محفوظة على هذا الجهاز.</p></details>
+    <noscript>فعّل JavaScript لتشغيل اللعبة.</noscript>
+  </main>
+  <div id="coinLayer" aria-hidden="true"></div>
+  <script type="module" src="approved-renderer.mjs?v=29.0"></script>
+  <script src="v25-home.js?v=29.0"></script>
+  <script>
+  if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost' || location.hostname==='127.0.0.1')){
+    window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}),{once:true});
+  }
+  </script>
+</body>
+</html>
